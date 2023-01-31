@@ -1,0 +1,51 @@
+{
+	"name": "ds_sfdc_copy_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_sfdc_salesforce",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"userName": {
+					"value": "@dataset().salesforceUsername",
+					"type": "Expression"
+				},
+				"apiVersion": {
+					"value": "@dataset().salesforceApiVersion",
+					"type": "Expression"
+				},
+				"password": {
+					"value": "@dataset().salesforcePassword",
+					"type": "Expression"
+				},
+				"securityToken": {
+					"value": "@dataset().salesforceSecret",
+					"type": "Expression"
+				},
+				"salesforceUrl": {
+					"value": "@dataset().salesforceUrl",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"salesforceUrl": {
+				"type": "string"
+			},
+			"salesforceUsername": {
+				"type": "string"
+			},
+			"salesforcePassword": {
+				"type": "string"
+			},
+			"salesforceSecret": {
+				"type": "string"
+			},
+			"salesforceApiVersion": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	}
+}
