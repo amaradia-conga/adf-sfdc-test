@@ -5,10 +5,40 @@
 		"annotations": [],
 		"type": "Salesforce",
 		"typeProperties": {
-			"environmentUrl": "https://login.salesforce.com",
-			"username": "a",
-			"apiVersion": "53.0",
-			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDU1ODZGNjRCLUFBQzEtNDMxMi1COTU4LTg3NjcxQUFEMjQzRF81YjY4NTM3My0wYWJhLTRlZDUtODcxZS05YmRkM2M3ODViYTkiDQp9"
+			"environmentUrl": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			},
+			"username": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			},
+			"password": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"securityToken": {
+				"type": "SecureString",
+				"value": "**********"
+			},
+			"apiVersion": "@{linkedService().apiVersion}"
+		},
+		"parameters": {
+			"userName": {
+				"type": "String"
+			},
+			"apiVersion": {
+				"type": "String"
+			},
+			"password": {
+				"type": "SecureString"
+			},
+			"securityToken": {
+				"type": "SecureString"
+			},
+			"salesforceUrl": {
+				"type": "String"
+			}
 		}
 	}
 }
