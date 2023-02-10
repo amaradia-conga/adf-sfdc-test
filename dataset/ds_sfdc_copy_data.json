@@ -2,7 +2,7 @@
 	"name": "ds_sfdc_copy_data",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "ls_sfdc_salesforce",
+			"referenceName": "Salesforce_test",
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"userName": {
@@ -35,10 +35,10 @@
 				"type": "string"
 			},
 			"salesforcePassword": {
-				"type": "string"
+				"type": "securestring"
 			},
 			"salesforceSecret": {
-				"type": "string"
+				"type": "securestring"
 			},
 			"salesforceApiVersion": {
 				"type": "string"
