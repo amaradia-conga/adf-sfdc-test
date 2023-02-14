@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'securityToken' of 'Salesforce_test'"
 		},
+		"Salesforce6_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Salesforce6'"
+		},
+		"Salesforce6_securityToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'securityToken' of 'Salesforce6'"
+		},
 		"Salesforce_test_properties_typeProperties_environmentUrl": {
 			"type": "object",
 			"defaultValue": {
@@ -23,6 +31,20 @@
 			}
 		},
 		"Salesforce_test_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_username": {
 			"type": "object",
 			"defaultValue": {
 				"type": "String",
@@ -73,6 +95,119 @@
 				}
 			},
 			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/Salesforce6')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"userName": {
+						"type": "String"
+					},
+					"apiVersion": {
+						"type": "String"
+					},
+					"password": {
+						"type": "SecureString"
+					},
+					"securityToken": {
+						"type": "SecureString"
+					},
+					"salesforceUrl": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Salesforce",
+				"typeProperties": {
+					"environmentUrl": "[parameters('Salesforce6_properties_typeProperties_environmentUrl')]",
+					"username": "[parameters('Salesforce6_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Salesforce6_password')]"
+					},
+					"securityToken": {
+						"type": "SecureString",
+						"value": "[parameters('Salesforce6_securityToken')]"
+					},
+					"apiVersion": {
+						"type": "String",
+						"value": "@{linkedService().apiVersion}"
+					}
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"policy": {
+					"elapsedTimeMetric": {},
+					"cancelAfter": {}
+				},
+				"annotations": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/test_data')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "Salesforce6",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"userName": {
+							"value": "@dataset().un",
+							"type": "Expression"
+						},
+						"apiVersion": {
+							"value": "@dataset().apiv",
+							"type": "Expression"
+						},
+						"password": {
+							"value": "@dataset().pass",
+							"type": "Expression"
+						},
+						"securityToken": {
+							"value": "@dataset().token",
+							"type": "Expression"
+						},
+						"salesforceUrl": {
+							"value": "@dataset().url",
+							"type": "Expression"
+						}
+					}
+				},
+				"parameters": {
+					"un": {
+						"type": "string"
+					},
+					"pass": {
+						"type": "securestring"
+					},
+					"token": {
+						"type": "securestring"
+					},
+					"url": {
+						"type": "string"
+					},
+					"apiv": {
+						"type": "string"
+					}
+				},
+				"annotations": [],
+				"type": "SalesforceObject",
+				"schema": [],
+				"typeProperties": {}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/Salesforce6')]"
+			]
 		}
 	]
 }

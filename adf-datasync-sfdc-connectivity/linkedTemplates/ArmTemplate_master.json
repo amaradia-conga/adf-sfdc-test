@@ -15,6 +15,14 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'securityToken' of 'Salesforce_test'"
 		},
+		"Salesforce6_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Salesforce6'"
+		},
+		"Salesforce6_securityToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'securityToken' of 'Salesforce6'"
+		},
 		"Salesforce_test_properties_typeProperties_environmentUrl": {
 			"type": "object",
 			"defaultValue": {
@@ -23,6 +31,20 @@
 			}
 		},
 		"Salesforce_test_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_username": {
 			"type": "object",
 			"defaultValue": {
 				"type": "String",
@@ -62,11 +84,23 @@
 					"Salesforce_test_securityToken": {
 						"value": "[parameters('Salesforce_test_securityToken')]"
 					},
+					"Salesforce6_password": {
+						"value": "[parameters('Salesforce6_password')]"
+					},
+					"Salesforce6_securityToken": {
+						"value": "[parameters('Salesforce6_securityToken')]"
+					},
 					"Salesforce_test_properties_typeProperties_environmentUrl": {
 						"value": "[parameters('Salesforce_test_properties_typeProperties_environmentUrl')]"
 					},
 					"Salesforce_test_properties_typeProperties_username": {
 						"value": "[parameters('Salesforce_test_properties_typeProperties_username')]"
+					},
+					"Salesforce6_properties_typeProperties_environmentUrl": {
+						"value": "[parameters('Salesforce6_properties_typeProperties_environmentUrl')]"
+					},
+					"Salesforce6_properties_typeProperties_username": {
+						"value": "[parameters('Salesforce6_properties_typeProperties_username')]"
 					}
 				}
 			},

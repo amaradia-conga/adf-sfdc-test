@@ -11,6 +11,12 @@
 		"Salesforce_test_securityToken": {
 			"value": ""
 		},
+		"Salesforce6_password": {
+			"value": ""
+		},
+		"Salesforce6_securityToken": {
+			"value": ""
+		},
 		"Salesforce_test_properties_typeProperties_environmentUrl": {
 			"value": {
 				"type": "String",
@@ -18,6 +24,18 @@
 			}
 		},
 		"Salesforce_test_properties_typeProperties_username": {
+			"value": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_environmentUrl": {
+			"value": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
+		},
+		"Salesforce6_properties_typeProperties_username": {
 			"value": {
 				"type": "String",
 				"value": "@{linkedService().userName}"
