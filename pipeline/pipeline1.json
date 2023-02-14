@@ -17,6 +17,7 @@
 				"typeProperties": {
 					"source": {
 						"type": "SalesforceSource",
+						"query": "Select Id, Name From Account LIMIT 1",
 						"readBehavior": "query"
 					},
 					"enableStaging": false
