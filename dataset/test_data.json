@@ -1,0 +1,51 @@
+{
+	"name": "test_data",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "Salesforce6",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"userName": {
+					"value": "@dataset().un",
+					"type": "Expression"
+				},
+				"apiVersion": {
+					"value": "@dataset().apiv",
+					"type": "Expression"
+				},
+				"password": {
+					"value": "@dataset().pass",
+					"type": "Expression"
+				},
+				"securityToken": {
+					"value": "@dataset().token",
+					"type": "Expression"
+				},
+				"salesforceUrl": {
+					"value": "@dataset().url",
+					"type": "Expression"
+				}
+			}
+		},
+		"parameters": {
+			"un": {
+				"type": "string"
+			},
+			"pass": {
+				"type": "securestring"
+			},
+			"token": {
+				"type": "securestring"
+			},
+			"url": {
+				"type": "string"
+			},
+			"apiv": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "SalesforceObject",
+		"schema": []
+	}
+}
