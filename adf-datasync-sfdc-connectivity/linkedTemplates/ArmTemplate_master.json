@@ -1,0 +1,76 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-datasync-sfdc-connectivity"
+		},
+		"Salesforce_test_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Salesforce_test'"
+		},
+		"Salesforce_test_securityToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'securityToken' of 'Salesforce_test'"
+		},
+		"Salesforce_test_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
+		},
+		"Salesforce_test_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adf-datasync-sfdc-connectivity_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"Salesforce_test_password": {
+						"value": "[parameters('Salesforce_test_password')]"
+					},
+					"Salesforce_test_securityToken": {
+						"value": "[parameters('Salesforce_test_securityToken')]"
+					},
+					"Salesforce_test_properties_typeProperties_environmentUrl": {
+						"value": "[parameters('Salesforce_test_properties_typeProperties_environmentUrl')]"
+					},
+					"Salesforce_test_properties_typeProperties_username": {
+						"value": "[parameters('Salesforce_test_properties_typeProperties_username')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}

@@ -1,0 +1,78 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adf-datasync-sfdc-connectivity"
+		},
+		"Salesforce_test_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Salesforce_test'"
+		},
+		"Salesforce_test_securityToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'securityToken' of 'Salesforce_test'"
+		},
+		"Salesforce_test_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
+		},
+		"Salesforce_test_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Salesforce_test')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"parameters": {
+					"userName": {
+						"type": "String"
+					},
+					"apiVersion": {
+						"type": "String"
+					},
+					"password": {
+						"type": "SecureString"
+					},
+					"securityToken": {
+						"type": "SecureString"
+					},
+					"salesforceUrl": {
+						"type": "String"
+					}
+				},
+				"annotations": [],
+				"type": "Salesforce",
+				"typeProperties": {
+					"environmentUrl": "[parameters('Salesforce_test_properties_typeProperties_environmentUrl')]",
+					"username": "[parameters('Salesforce_test_properties_typeProperties_username')]",
+					"password": {
+						"type": "SecureString",
+						"value": "[parameters('Salesforce_test_password')]"
+					},
+					"securityToken": {
+						"type": "SecureString",
+						"value": "[parameters('Salesforce_test_securityToken')]"
+					},
+					"apiVersion": "@{linkedService().apiVersion}"
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
