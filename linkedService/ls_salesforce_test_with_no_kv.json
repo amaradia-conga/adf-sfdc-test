@@ -1,0 +1,32 @@
+{
+	"name": "ls_salesforce_test_with_no_kv",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"type": "Salesforce",
+		"typeProperties": {
+			"environmentUrl": "@{linkedService().salesforceUrl}",
+			"username": "@{linkedService().userName}",
+			"password": "@{linkedService().password}",
+			"securityToken": "@{linkedService().securityToken}",
+			"apiVersion": "@{linkedService().apiVersion}"
+		},
+		"parameters": {
+			"userName": {
+				"type": "String"
+			},
+			"apiVersion": {
+				"type": "String"
+			},
+			"password": {
+				"type": "String"
+			},
+			"securityToken": {
+				"type": "String"
+			},
+			"salesforceUrl": {
+				"type": "String"
+			}
+		},
+		"annotations": []
+	}
+}
