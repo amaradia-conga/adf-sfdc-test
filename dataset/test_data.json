@@ -2,7 +2,7 @@
 	"name": "test_data",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "Salesforce6",
+			"referenceName": "ls_salesforce_test_with_no_kv",
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"userName": {
@@ -32,10 +32,10 @@
 				"type": "string"
 			},
 			"pass": {
-				"type": "securestring"
+				"type": "string"
 			},
 			"token": {
-				"type": "securestring"
+				"type": "string"
 			},
 			"url": {
 				"type": "string"

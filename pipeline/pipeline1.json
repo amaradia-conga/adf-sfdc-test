@@ -57,10 +57,10 @@
 				"type": "string"
 			},
 			"pass": {
-				"type": "securestring"
+				"type": "string"
 			},
 			"token": {
-				"type": "securestring"
+				"type": "string"
 			},
 			"url": {
 				"type": "string"
