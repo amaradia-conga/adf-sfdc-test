@@ -20,9 +20,50 @@
 						"query": "Select Id, Name From Account LIMIT 1",
 						"readBehavior": "query"
 					},
-					"enableStaging": false
+					"sink": {
+						"type": "SalesforceSink",
+						"writeBatchSize": 5000,
+						"writeBehavior": "insert"
+					},
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"typeConversion": true,
+						"typeConversionSettings": {
+							"allowDataTruncation": true,
+							"treatBooleanAsNumber": false
+						}
+					}
 				},
 				"inputs": [
+					{
+						"referenceName": "test_data",
+						"type": "DatasetReference",
+						"parameters": {
+							"un": {
+								"value": "@pipeline().parameters.un",
+								"type": "Expression"
+							},
+							"pass": {
+								"value": "@pipeline().parameters.pass",
+								"type": "Expression"
+							},
+							"token": {
+								"value": "@pipeline().parameters.token",
+								"type": "Expression"
+							},
+							"url": {
+								"value": "@pipeline().parameters.url",
+								"type": "Expression"
+							},
+							"apiv": {
+								"value": "@pipeline().parameters.apiv",
+								"type": "Expression"
+							}
+						}
+					}
+				],
+				"outputs": [
 					{
 						"referenceName": "test_data",
 						"type": "DatasetReference",

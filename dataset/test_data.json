@@ -46,6 +46,9 @@
 		},
 		"annotations": [],
 		"type": "SalesforceObject",
-		"schema": []
+		"schema": [],
+		"typeProperties": {
+			"objectApiName": "Account"
+		}
 	}
 }
