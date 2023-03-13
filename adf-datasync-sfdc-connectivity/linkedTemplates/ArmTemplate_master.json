@@ -7,6 +7,14 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "adf-datasync-sfdc-connectivity"
 		},
+		"Salesforce6_password": {
+			"type": "secureString",
+			"metadata": "Secure string for 'password' of 'Salesforce6'"
+		},
+		"Salesforce6_securityToken": {
+			"type": "secureString",
+			"metadata": "Secure string for 'securityToken' of 'Salesforce6'"
+		},
 		"Salesforce_test_password": {
 			"type": "secureString",
 			"metadata": "Secure string for 'password' of 'Salesforce_test'"
@@ -15,13 +23,19 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'securityToken' of 'Salesforce_test'"
 		},
-		"Salesforce6_password": {
-			"type": "secureString",
-			"metadata": "Secure string for 'password' of 'Salesforce6'"
+		"Salesforce6_properties_typeProperties_environmentUrl": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
 		},
-		"Salesforce6_securityToken": {
-			"type": "secureString",
-			"metadata": "Secure string for 'securityToken' of 'Salesforce6'"
+		"Salesforce6_properties_typeProperties_username": {
+			"type": "object",
+			"defaultValue": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
 		},
 		"Salesforce_test_properties_typeProperties_environmentUrl": {
 			"type": "object",
@@ -37,19 +51,13 @@
 				"value": "@{linkedService().userName}"
 			}
 		},
-		"Salesforce6_properties_typeProperties_environmentUrl": {
-			"type": "object",
-			"defaultValue": {
-				"type": "String",
-				"value": "@{linkedService().salesforceUrl}"
-			}
+		"ls_salesforce_test_with_no_kv_properties_typeProperties_environmentUrl": {
+			"type": "string",
+			"defaultValue": "@{linkedService().salesforceUrl}"
 		},
-		"Salesforce6_properties_typeProperties_username": {
-			"type": "object",
-			"defaultValue": {
-				"type": "String",
-				"value": "@{linkedService().userName}"
-			}
+		"ls_salesforce_test_with_no_kv_properties_typeProperties_username": {
+			"type": "string",
+			"defaultValue": "@{linkedService().userName}"
 		},
 		"containerUri": {
 			"type": "string",
@@ -78,17 +86,23 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"Salesforce6_password": {
+						"value": "[parameters('Salesforce6_password')]"
+					},
+					"Salesforce6_securityToken": {
+						"value": "[parameters('Salesforce6_securityToken')]"
+					},
 					"Salesforce_test_password": {
 						"value": "[parameters('Salesforce_test_password')]"
 					},
 					"Salesforce_test_securityToken": {
 						"value": "[parameters('Salesforce_test_securityToken')]"
 					},
-					"Salesforce6_password": {
-						"value": "[parameters('Salesforce6_password')]"
+					"Salesforce6_properties_typeProperties_environmentUrl": {
+						"value": "[parameters('Salesforce6_properties_typeProperties_environmentUrl')]"
 					},
-					"Salesforce6_securityToken": {
-						"value": "[parameters('Salesforce6_securityToken')]"
+					"Salesforce6_properties_typeProperties_username": {
+						"value": "[parameters('Salesforce6_properties_typeProperties_username')]"
 					},
 					"Salesforce_test_properties_typeProperties_environmentUrl": {
 						"value": "[parameters('Salesforce_test_properties_typeProperties_environmentUrl')]"
@@ -96,11 +110,11 @@
 					"Salesforce_test_properties_typeProperties_username": {
 						"value": "[parameters('Salesforce_test_properties_typeProperties_username')]"
 					},
-					"Salesforce6_properties_typeProperties_environmentUrl": {
-						"value": "[parameters('Salesforce6_properties_typeProperties_environmentUrl')]"
+					"ls_salesforce_test_with_no_kv_properties_typeProperties_environmentUrl": {
+						"value": "[parameters('ls_salesforce_test_with_no_kv_properties_typeProperties_environmentUrl')]"
 					},
-					"Salesforce6_properties_typeProperties_username": {
-						"value": "[parameters('Salesforce6_properties_typeProperties_username')]"
+					"ls_salesforce_test_with_no_kv_properties_typeProperties_username": {
+						"value": "[parameters('ls_salesforce_test_with_no_kv_properties_typeProperties_username')]"
 					}
 				}
 			},

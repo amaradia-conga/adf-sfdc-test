@@ -5,17 +5,29 @@
 		"factoryName": {
 			"value": "adf-datasync-sfdc-connectivity"
 		},
+		"Salesforce6_password": {
+			"value": ""
+		},
+		"Salesforce6_securityToken": {
+			"value": ""
+		},
 		"Salesforce_test_password": {
 			"value": ""
 		},
 		"Salesforce_test_securityToken": {
 			"value": ""
 		},
-		"Salesforce6_password": {
-			"value": ""
+		"Salesforce6_properties_typeProperties_environmentUrl": {
+			"value": {
+				"type": "String",
+				"value": "@{linkedService().salesforceUrl}"
+			}
 		},
-		"Salesforce6_securityToken": {
-			"value": ""
+		"Salesforce6_properties_typeProperties_username": {
+			"value": {
+				"type": "String",
+				"value": "@{linkedService().userName}"
+			}
 		},
 		"Salesforce_test_properties_typeProperties_environmentUrl": {
 			"value": {
@@ -29,17 +41,11 @@
 				"value": "@{linkedService().userName}"
 			}
 		},
-		"Salesforce6_properties_typeProperties_environmentUrl": {
-			"value": {
-				"type": "String",
-				"value": "@{linkedService().salesforceUrl}"
-			}
+		"ls_salesforce_test_with_no_kv_properties_typeProperties_environmentUrl": {
+			"value": "@{linkedService().salesforceUrl}"
 		},
-		"Salesforce6_properties_typeProperties_username": {
-			"value": {
-				"type": "String",
-				"value": "@{linkedService().userName}"
-			}
+		"ls_salesforce_test_with_no_kv_properties_typeProperties_username": {
+			"value": "@{linkedService().userName}"
 		},
 		"containerUri": {
 			"value": ""
